@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\jrodr\\Desarrollo\\MIMO\\Multiplawtform\\Practica\\MimoRutas\\androidApp\\build\\intermediates\\merged_res\\debug\\drawable_ic_arrow_right.xml.flat",
+        "source": "C:\\Users\\jrodr\\Desarrollo\\MIMO\\Multiplawtform\\Practica\\MimoRutas\\androidApp\\src\\main\\res\\drawable\\ic_arrow_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\jrodr\\Desarrollo\\MIMO\\Multiplawtform\\Practica\\MimoRutas\\androidApp\\build\\intermediates\\merged_res\\debug\\drawable_ic_favorite.xml.flat",
+        "source": "C:\\Users\\jrodr\\Desarrollo\\MIMO\\Multiplawtform\\Practica\\MimoRutas\\androidApp\\src\\main\\res\\drawable\\ic_favorite.xml"
+    },
+    {
+        "merged": "C:\\Users\\jrodr\\Desarrollo\\MIMO\\Multiplawtform\\Practica\\MimoRutas\\androidApp\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\jrodr\\Desarrollo\\MIMO\\Multiplawtform\\Practica\\MimoRutas\\androidApp\\src\\main\\res\\layout\\activity_main.xml"
+    }
+]

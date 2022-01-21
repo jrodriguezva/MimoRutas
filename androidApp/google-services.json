@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "46116795946",
+    "firebase_url": "https://mimorutes-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "mimorutes",
+    "storage_bucket": "mimorutes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46116795946:android:fd1eb1e683d4fe7a3f3553",
+        "android_client_info": {
+          "package_name": "com.jrodriguezva.mimorutas.androidApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46116795946-0mbumhm971195a7lsc8dfbtka8amhof9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSqomtASlszdqex4imwPnvthyt_YDXNVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46116795946-0mbumhm971195a7lsc8dfbtka8amhof9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "46116795946-ifdm5mjqdl9apm1ar8agfeu6ngcbragu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.jrodriguezva.mimorutas"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "2"
+}

@@ -1,2 +1,0 @@
-com/jrodriguezva/mimorutas/androidApp/BuildConfig.java
- com.jrodriguezva.mimorutas.androidApp.BuildConfig

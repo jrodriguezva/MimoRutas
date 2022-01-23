@@ -41,7 +41,7 @@ object GeometrySerializer : KSerializer<Geometry> {
         }
     }
 
-    @ExperimentalSerializationApi
+    @OptIn(ExperimentalSerializationApi::class)
     override fun deserialize(decoder: Decoder): Geometry = decoder.decodeStructure(descriptor) {
         if (decodeSequentially()) {
             val dataType = decodeStringElement(descriptor, 0)

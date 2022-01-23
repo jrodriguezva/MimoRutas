@@ -1,10 +1,9 @@
 pluginManagement {
     repositories {
-        google()
         gradlePluginPortal()
+        google()
         mavenCentral()
     }
-    
 }
 rootProject.name = "MimoRutas"
 
@@ -14,3 +13,4 @@ include(":shared")
 
 
 enableFeaturePreview("VERSION_CATALOGS")
+include(":iosApp")

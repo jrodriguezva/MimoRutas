@@ -1,10 +1,8 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("kotlin-android-extensions")
     kotlin("plugin.serialization")
+    id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 
 group = "com.jrodriguezva.mimorutas"
@@ -12,26 +10,40 @@ version = "1.0-SNAPSHOT"
 
 kotlin {
     android()
-    ios {
-        binaries {
-            framework {
-                baseName = "shared"
-            }
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "shared"
         }
     }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.bundles.ktor.common)
-                implementation(libs.bundles.firebase)
+                //Network
+                implementation(libs.ktor.core)
+                implementation(libs.ktor.logging)
+                implementation(libs.ktor.client.serialization)
+                implementation(libs.ktor.client.content.negotiation)
+
+                //Coroutines
+                implementation(libs.kotlinx.coroutines.core)
+                //Logger
+                implementation(libs.napier)
+                //JSON
+                implementation(libs.kotlinx.serialization.json)
+                //Key-Value storage
+                implementation(libs.multiplatform.settings)
             }
         }
         val commonTest by getting
         val androidMain by getting {
             dependencies {
                 implementation("com.google.android.material:material:1.5.0")
-                implementation(libs.ktor.client.okHttp)
-
+                implementation(libs.ktor.client.okhttp)
             }
         }
         val androidTest by getting {
@@ -40,18 +52,20 @@ kotlin {
 
             }
         }
-        val iosMain by getting {
+
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
             dependencies {
+                //Network
                 implementation(libs.ktor.client.ios)
-                val coroutineCore = libs.coroutines.core.get()
-                implementation("${coroutineCore.module.group}:${coroutineCore.module.name}:${coroutineCore.versionConstraint.displayName}") {
-                    version {
-                        strictly(libs.versions.coroutines.native.get())
-                    }
-                }
             }
         }
-        val iosTest by getting
     }
 }
 
@@ -68,17 +82,10 @@ android {
     }
 }
 
-val packForXcode by tasks.creating(Sync::class) {
-    group = "build"
-    val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
-    val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
-    val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
-    val framework = kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
-    inputs.property("mode", mode)
-    dependsOn(framework.linkTask)
-    val targetDir = File(buildDir, "xcode-frameworks")
-    from({ framework.outputDirectory })
-    into(targetDir)
+multiplatformSwiftPackage {
+    packageName("MimoRutas")
+    swiftToolsVersion("5.3")
+    targetPlatforms {
+        iOS { v("13") }
+    }
 }
-
-tasks.getByName("build").dependsOn(packForXcode)

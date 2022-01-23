@@ -2,12 +2,12 @@ package com.jrodriguezva.mimorutas.shared.ktor
 
 import com.jrodriguezva.mimorutas.shared.ktor.response.GeoJsonServerResult
 import io.ktor.client.HttpClient
-import io.ktor.client.features.HttpTimeout
-import io.ktor.client.features.json.JsonFeature
-import io.ktor.client.features.json.serializer.KotlinxSerializer
+import io.ktor.client.call.*
+import io.ktor.client.plugins.*
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.get
 import io.ktor.http.takeFrom
+import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 
@@ -15,10 +15,12 @@ import kotlinx.serialization.json.Json
 class IdecylApiImpl : KtorApi {
 
     private val client = HttpClient {
-        install(JsonFeature) {
-            serializer = KotlinxSerializer(Json {
+        install(ContentNegotiation) {
+            json(Json {
                 ignoreUnknownKeys = true
                 explicitNulls = false
+                prettyPrint = true
+                isLenient = true
             })
         }
 
@@ -33,7 +35,7 @@ class IdecylApiImpl : KtorApi {
     override suspend fun getGeoJson(sigren: String): GeoJsonServerResult {
         return client.get {
             sigren("typeNames=sigren:$sigren")
-        }
+        }.body()
     }
 
     private fun HttpRequestBuilder.sigren(path: String) {

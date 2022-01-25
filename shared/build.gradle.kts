@@ -22,7 +22,6 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.bundles.ktor.common)
                 //Network
                 implementation(libs.ktor.core)
                 implementation(libs.ktor.logging)

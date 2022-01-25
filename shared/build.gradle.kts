@@ -2,7 +2,6 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     kotlin("plugin.serialization")
-    id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 
 group = "com.jrodriguezva.mimorutas"
@@ -23,6 +22,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(libs.bundles.ktor.common)
                 //Network
                 implementation(libs.ktor.core)
                 implementation(libs.ktor.logging)
@@ -44,6 +44,8 @@ kotlin {
             dependencies {
                 implementation("com.google.android.material:material:1.5.0")
                 implementation(libs.ktor.client.okhttp)
+                implementation(libs.bundles.firebase)
+
             }
         }
         val androidTest by getting {
@@ -79,13 +81,5 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-    }
-}
-
-multiplatformSwiftPackage {
-    packageName("MimoRutas")
-    swiftToolsVersion("5.3")
-    targetPlatforms {
-        iOS { v("13") }
     }
 }

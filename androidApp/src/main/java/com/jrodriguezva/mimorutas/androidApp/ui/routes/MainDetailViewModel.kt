@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.maps.android.data.geojson.GeoJsonFeature
 import com.jrodriguezva.mimorutas.androidApp.ui.navigation.NavArgs
-import com.jrodriguezva.mimorutas.shared.FirebaseService
-import com.jrodriguezva.mimorutas.shared.FirebaseService.getFavoritesRoutes
+import com.jrodriguezva.mimorutas.shared.services.FirebaseService
+import com.jrodriguezva.mimorutas.shared.services.FirebaseService.getFavoritesRoutes
 import com.jrodriguezva.mimorutas.shared.RouteService
 import com.jrodriguezva.mimorutas.shared.ktor.response.GeoJsonServerResult
 import kotlinx.coroutines.flow.MutableStateFlow

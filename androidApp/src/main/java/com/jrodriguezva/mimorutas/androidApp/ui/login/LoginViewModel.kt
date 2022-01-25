@@ -8,8 +8,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jrodriguezva.mimorutas.androidApp.R
-import com.jrodriguezva.mimorutas.shared.AuthService
-import com.jrodriguezva.mimorutas.shared.AuthService.checkUserLogged
+import com.jrodriguezva.mimorutas.shared.services.AuthService
+import com.jrodriguezva.mimorutas.shared.services.AuthService.checkUserLogged
 import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel() {

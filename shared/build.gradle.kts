@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     kotlin("plugin.serialization")
+    kotlin("native.cocoapods")
 }
 
 group = "com.jrodriguezva.mimorutas"
@@ -17,6 +18,12 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
         }
+    }
+
+    cocoapods {
+        // Configure fields required by CocoaPods.
+        summary = "PeopleInSpace"
+        homepage = "https://github.com/joreilly/PeopleInSpace"
     }
 
     sourceSets {

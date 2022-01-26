@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/compose-model-1643144769920.xml" value="0.16596283783783783" />
         <entry key="..\:/Users/jrodr/Desarrollo/MIMO/Multiplawtform/Practica/MimoRutas/androidApp/src/main/res/drawable/ic_arrow_right.xml" value="0.3416666666666667" />
         <entry key="..\:/Users/jrodr/Desarrollo/MIMO/Multiplawtform/Practica/MimoRutas/androidApp/src/main/res/drawable/ic_favorite.xml" value="0.3182291666666667" />
       </map>
@@ -12,7 +13,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

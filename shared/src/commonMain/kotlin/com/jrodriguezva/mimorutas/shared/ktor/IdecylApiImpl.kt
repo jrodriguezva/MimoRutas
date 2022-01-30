@@ -1,12 +1,10 @@
 package com.jrodriguezva.mimorutas.shared.ktor
 
 import com.jrodriguezva.mimorutas.shared.ktor.response.GeoJsonServerResult
-import io.ktor.client.HttpClient
+import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.plugins.*
-import io.ktor.client.request.HttpRequestBuilder
-import io.ktor.client.request.get
-import io.ktor.http.takeFrom
+import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -34,13 +32,14 @@ class IdecylApiImpl : KtorApi {
 
     override suspend fun getGeoJson(sigren: String): GeoJsonServerResult {
         return client.get {
-            sigren("typeNames=sigren:$sigren")
+            url("https://idecyl.jcyl.es/geoserver/sigren/wfs")
+            parameter("service", "WFS")
+            parameter("version", "1.1.0")
+            parameter("request", "GetFeature")
+            parameter("outputFormat", "JSON")
+            parameter("srsName", "EPSG:4326")
+            parameter("typeNames", "sigren:$sigren")
         }.body()
-    }
 
-    private fun HttpRequestBuilder.sigren(path: String) {
-        url {
-            takeFrom("https://idecyl.jcyl.es/geoserver/sigren/wfs?service=WFS&version=1.1.0&request=GetFeature&outputFormat=JSON&srsName=EPSG:4326&$path")
-        }
     }
 }

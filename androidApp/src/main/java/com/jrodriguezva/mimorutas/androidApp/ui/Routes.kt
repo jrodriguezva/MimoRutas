@@ -81,7 +81,6 @@ fun RoutesCard(route: Space, onItemClick: (Space) -> Unit) {
             )
         }
     }
-
 }
 
 @ExperimentalMaterialApi

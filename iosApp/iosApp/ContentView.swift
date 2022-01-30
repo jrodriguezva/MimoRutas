@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  iosApp
 //
-//  Created by Juan Rodríguez on 23/1/22.
+//  Created by Juan Rodríguez on 30/1/22.
 //
 
 import SwiftUI
@@ -16,7 +16,7 @@ struct ContentView: View {
 
 struct RedView: View {
     var body: some View {
-        let list = RouteService().getRoutes()
+        let list = RouteService().getAllSpaces()
         NavigationView {
             List {
                 ForEach(list, id: \.self) { route in
@@ -29,7 +29,7 @@ struct RedView: View {
                     }
                 }
             }
-            .navigationTitle("Rutas")
+            .navigationTitle("Todos los espacios")
             .navigationBarTitleDisplayMode(.inline)
         }
     }

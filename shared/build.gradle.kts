@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
+
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
@@ -6,7 +8,7 @@ plugins {
 }
 
 group = "com.jrodriguezva.mimorutas"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 kotlin {
     android()
@@ -21,9 +23,15 @@ kotlin {
     }
 
     cocoapods {
-        // Configure fields required by CocoaPods.
-        summary = "PeopleInSpace"
-        homepage = "https://github.com/joreilly/PeopleInSpace"
+        framework {
+            // Configure fields required by CocoaPods.
+            summary = "PeopleInSpace"
+            homepage = "https://github.com/joreilly/PeopleInSpace"
+        }
+
+        // Maps custom Xcode configuration to NativeBuildType
+        xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] = NativeBuildType.DEBUG
+        xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] = NativeBuildType.RELEASE
     }
 
     sourceSets {

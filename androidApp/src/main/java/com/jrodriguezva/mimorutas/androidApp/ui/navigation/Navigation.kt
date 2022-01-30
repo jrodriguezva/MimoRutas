@@ -15,7 +15,7 @@ import com.jrodriguezva.mimorutas.androidApp.ui.login.Login
 import com.jrodriguezva.mimorutas.androidApp.ui.login.Register
 import com.jrodriguezva.mimorutas.androidApp.ui.routes.MainDetailLayout
 import com.jrodriguezva.mimorutas.shared.RouteService
-import com.jrodriguezva.mimorutas.shared.models.Route
+import com.jrodriguezva.mimorutas.shared.models.Space
 
 sealed class Screen(val route: String) {
     object Login : Screen("login")
@@ -23,7 +23,7 @@ sealed class Screen(val route: String) {
     object Home : Screen("home")
 
     object Detail : Screen("detail/{${NavArgs.ItemId.key}}?${NavArgs.Title.key}={${NavArgs.Title.key}}") {
-        fun createRoute(route: Route) = "detail/${route.args}?${NavArgs.Title.key}=${route.name}"
+        fun createRoute(route: Space) = "detail/${route.args}?${NavArgs.Title.key}=${route.name}"
     }
 }
 
@@ -61,7 +61,7 @@ fun Navigation(navController: NavHostController = rememberNavController()) {
         }
         composable(Screen.Home.route) {
             Routes(
-                routes = RouteService.getRoutes(),
+                routes = RouteService.getAllSpaces(),
                 onItemClick = {
                     navController.navigate(Screen.Detail.createRoute(it))
                 })

@@ -23,16 +23,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jrodriguezva.mimorutas.androidApp.R
 import com.jrodriguezva.mimorutas.androidApp.ui.theme.AppTheme
-import com.jrodriguezva.mimorutas.shared.models.Route
+import com.jrodriguezva.mimorutas.shared.models.Space
 
 @ExperimentalMaterialApi
 @ExperimentalMaterial3Api
 @Composable
-fun Routes(routes: List<Route>, onItemClick: (Route) -> Unit = {}) {
+fun Routes(routes: List<Space>, onItemClick: (Space) -> Unit = {}) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Routes") },
+                title = { Text("Todos los espacios") },
             )
         },
         content = { innerPadding ->
@@ -51,7 +51,7 @@ fun Routes(routes: List<Route>, onItemClick: (Route) -> Unit = {}) {
 
 @ExperimentalMaterialApi
 @Composable
-fun RoutesCard(route: Route, onItemClick: (Route) -> Unit) {
+fun RoutesCard(route: Space, onItemClick: (Space) -> Unit) {
     Card(
         shape = RoundedCornerShape(8.dp),
         elevation = 4.dp,
@@ -90,6 +90,6 @@ fun RoutesCard(route: Route, onItemClick: (Route) -> Unit) {
 @Composable
 fun PreviewConversation() {
     AppTheme {
-        Routes(listOf(Route("prueba", ""), Route("prueba1", ""), Route("prueba 2", ""), Route("prueba1", "")))
+        Routes(listOf(Space("prueba", ""), Space("prueba1", ""), Space("prueba 2", ""), Space("prueba1", "")))
     }
 }

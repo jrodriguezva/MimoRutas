@@ -34,6 +34,7 @@ kotlin {
                 implementation(libs.ktor.logging)
                 implementation(libs.ktor.client.serialization)
                 implementation(libs.ktor.client.content.negotiation)
+                implementation(libs.napier)
 
                 //Coroutines
                 implementation(libs.kotlinx.coroutines.core)

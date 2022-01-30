@@ -4,20 +4,21 @@ import com.jrodriguezva.mimorutas.shared.ktor.IdecylApiImpl
 import com.jrodriguezva.mimorutas.shared.ktor.KtorApi
 import com.jrodriguezva.mimorutas.shared.ktor.response.GeoJsonServerResult
 import com.jrodriguezva.mimorutas.shared.models.DataState
-import com.jrodriguezva.mimorutas.shared.models.Route
+import com.jrodriguezva.mimorutas.shared.models.Space
 import kotlinx.serialization.ExperimentalSerializationApi
 
 
 @OptIn(ExperimentalSerializationApi::class)
-class RouteService {
+object RouteService {
     private val ktorApi: KtorApi = IdecylApiImpl()
-    fun getRoutes(): List<Route> {
+
+    fun getAllSpaces(): List<Space> {
         return listOf(
-            Route("Espacios naturales", "espacio"),
-            Route("Aparcamientos", "aparcamiento"),
-            Route("Rutas disponibles", "senda"),
-            Route("Zonas de acampada", "zona_acamp"),
-            Route("Campamentos", "campamento"),
+            Space("Espacios naturales", "espacio"),
+            Space("Aparcamientos", "aparcamiento"),
+            Space("Rutas disponibles", "senda"),
+            Space("Zonas de acampada", "zona_acamp"),
+            Space("Campamentos", "campamento"),
         )
     }
 

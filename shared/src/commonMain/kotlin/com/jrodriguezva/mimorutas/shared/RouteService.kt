@@ -27,9 +27,9 @@ object RouteService {
 
         val feature = breedResult.features
         return if (feature?.isEmpty() == true) {
-            DataState(empty = true)
+            DataState(empty = true, loading = false)
         } else {
-            DataState(breedResult)
+            DataState(breedResult, loading = false)
         }
 
     }

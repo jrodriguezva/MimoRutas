@@ -1,38 +1,118 @@
 import SwiftUI
+import shared
 
 let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
 
-struct ContentView : View {
 
+class ObservableAuthModel: ObservableObject {
+    private var viewModel: AuthViewModel?
+    
+    @Published
+    var loading = false
+    
+    @Published
+    var loggedIn: Bool = false
+    
+    @Published
+    var error: String?
+    
+    func activate() {
+        viewModel = AuthViewModel { [weak self] dataState in
+            self?.loading = dataState.loading
+            self?.loggedIn = dataState.data as? Bool ?? false
+            self?.error = dataState.exception
+            
+            
+            if let errorMessage = dataState.exception {
+                
+            }
+        }
+    }
+    
+    func deactivate() {
+        viewModel?.onDestroy()
+        viewModel = nil
+    }
+    
+    func onLogin(_ email: String,_ pass: String) {
+        viewModel?.login(user: email,pass:pass)
+    }
+    
+}
+
+struct InitScreen : View {
+    @StateObject
+    var observableModel =  ObservableAuthModel()
+    var body: some View {
+        if observableModel.loggedIn {
+            MainView()
+        } else {
+            LoginScreen(
+                observableModel:  observableModel
+            ).onAppear(perform: {
+                observableModel.activate()
+            })
+                .onDisappear(perform: {
+                    observableModel.deactivate()
+                })
+        }
+    }
+}
+
+
+struct LoginScreen : View {
+    var observableModel : ObservableAuthModel
+    var body: some View {
+        NavigationView {
+            LoginView(
+                onLoginClick:{ observableModel.onLogin($0, $1) }
+            )
+        }
+    }
+}
+struct LoginView: View {
     @State var username: String = ""
     @State var password: String = ""
-
+    var onLoginClick: (String,String) -> Void
     var body: some View {
-
         VStack {
             WelcomeText()
             TextField("Username", text: $username)
                 .padding()
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
+                .textInputAutocapitalization(.never)
                 .padding(.bottom, 20)
             SecureField("Password", text: $password)
                 .padding()
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
-            Button(action: {print("Button tapped")}) {
-               LoginButtonContent()
+            Button(action: {
+                onLoginClick(username,password)
+            }) {
+                LoginButtonContent()
             }
+            
+            NavigationLink(destination: RegisterScreen()) {
+                RegisterButtonContent()
+            }
+            
+            .buttonStyle(PlainButtonStyle())
+            
+            
         }
         .padding()
+        
     }
 }
 
 #if DEBUG
-struct ContentView_Previews : PreviewProvider {
+struct LoginView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView()
+        LoginView(
+            onLoginClick: {_,_ in }
+        )
     }
 }
 #endif
@@ -46,21 +126,21 @@ struct WelcomeText : View {
     }
 }
 
-struct UserImage : View {
-    var body: some View {
-        return Image("userImage")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 150, height: 150)
-            .clipped()
-            .cornerRadius(150)
-            .padding(.bottom, 75)
-    }
-}
-
 struct LoginButtonContent : View {
     var body: some View {
         return Text("LOGIN")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 220, height: 60)
+            .background(Color.green)
+            .cornerRadius(15.0)
+    }
+}
+
+struct RegisterButtonContent : View {
+    var body: some View {
+        return Text("SING UP")
             .font(.headline)
             .foregroundColor(.white)
             .padding()

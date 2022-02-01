@@ -1,10 +1,9 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
     kotlin("plugin.serialization")
-    kotlin("native.cocoapods")
 }
 
 group = "com.jrodriguezva.mimorutas"
@@ -20,18 +19,6 @@ kotlin {
         it.binaries.framework {
             baseName = "shared"
         }
-    }
-
-    cocoapods {
-        framework {
-            // Configure fields required by CocoaPods.
-            summary = "PeopleInSpace"
-            homepage = "https://github.com/joreilly/PeopleInSpace"
-        }
-
-        // Maps custom Xcode configuration to NativeBuildType
-        xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] = NativeBuildType.DEBUG
-        xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] = NativeBuildType.RELEASE
     }
 
     sourceSets {
@@ -60,7 +47,6 @@ kotlin {
                 implementation("com.google.android.material:material:1.5.0")
                 implementation(libs.ktor.client.okhttp)
                 implementation(libs.bundles.firebase)
-
             }
         }
         val androidTest by getting {
@@ -96,5 +82,11 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }

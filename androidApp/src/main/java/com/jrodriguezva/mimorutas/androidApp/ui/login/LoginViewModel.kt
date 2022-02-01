@@ -27,7 +27,6 @@ class LoginViewModel : ViewModel() {
     }
 
     fun loginClicked(user: String, pass: String) {
-
         when {
             !user.contains('@') -> state = UiState(error = R.string.wrong_username)
             pass.length < 5 -> state = UiState(error = R.string.short_password)

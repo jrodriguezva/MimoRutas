@@ -13,7 +13,7 @@ Pod::Spec.new do |spec|
 
                 
 
-                
+    spec.dependency 'FirebaseAuth'
 
     spec.pod_target_xcconfig = {
         'KOTLIN_PROJECT_PATH' => ':shared',

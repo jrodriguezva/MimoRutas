@@ -7,20 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D9A7EC427A89BCC00AD6D3F /* DetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9A7EC327A89BCC00AD6D3F /* DetailScreen.swift */; };
 		0DFBF3E727A68A63006F635B /* iosAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFBF3E627A68A63006F635B /* iosAppApp.swift */; };
 		0DFBF3E927A68A63006F635B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFBF3E827A68A63006F635B /* ContentView.swift */; };
 		0DFBF3EB27A68A64006F635B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DFBF3EA27A68A64006F635B /* Assets.xcassets */; };
 		0DFBF3EE27A68A64006F635B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DFBF3ED27A68A64006F635B /* Preview Assets.xcassets */; };
 		0DFBF3F627A68FD7006F635B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DFBF3F527A68FD7006F635B /* GoogleService-Info.plist */; };
+		0DFBF3F927A6910A006F635B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0DFBF3F827A6910A006F635B /* FirebaseAuth */; };
+		0DFBF3FB27A6910A006F635B /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 0DFBF3FA27A6910A006F635B /* FirebaseDatabase */; };
+		0DFBF3FD27A6B235006F635B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFBF3FC27A6B235006F635B /* LoginView.swift */; };
+		0DFBF3FF27A6CDE5006F635B /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFBF3FE27A6CDE5006F635B /* RegisterScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D9A7EC327A89BCC00AD6D3F /* DetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreen.swift; sourceTree = "<group>"; };
+		0D9A7EC627A8B10D00AD6D3F /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Carthage/Build/iOS/GoogleMaps.framework; sourceTree = "<group>"; };
+		0D9A7ECA27A8B11000AD6D3F /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Carthage/Build/iOS/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		0D9A7ECD27A8B11200AD6D3F /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Carthage/Build/iOS/GoogleMapsCore.framework; sourceTree = "<group>"; };
+		0D9A7ED027A8B11400AD6D3F /* GoogleMapsM4B.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsM4B.framework; path = Carthage/Build/iOS/GoogleMapsM4B.framework; sourceTree = "<group>"; };
+		0D9A7EDD27A8B1F600AD6D3F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		0D9A7EDF27A8B1FD00AD6D3F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0D9A7EE127A8B20400AD6D3F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0D9A7EE327A8B20A00AD6D3F /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		0D9A7EE527A8B21000AD6D3F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0D9A7EE727A8B21500AD6D3F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		0D9A7EE927A8B21B00AD6D3F /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		0D9A7EEB27A8B22000AD6D3F /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		0D9A7EED27A8B22700AD6D3F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		0D9A7EEF27A8B22E00AD6D3F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		0D9A7EF127A8B23600AD6D3F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		0D9A7EF327A8B23C00AD6D3F /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		0D9A7EF527A8B24200AD6D3F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		0D9A7EF727A8B24800AD6D3F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0D9A7EF927A8B25600AD6D3F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0D9A7EFB27A8B25C00AD6D3F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0DFBF3E327A68A63006F635B /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DFBF3E627A68A63006F635B /* iosAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosAppApp.swift; sourceTree = "<group>"; };
 		0DFBF3E827A68A63006F635B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0DFBF3EA27A68A64006F635B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DFBF3ED27A68A64006F635B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0DFBF3F527A68FD7006F635B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0DFBF3FC27A6B235006F635B /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		0DFBF3FE27A6CDE5006F635B /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,17 +56,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DFBF3FB27A6910A006F635B /* FirebaseDatabase in Frameworks */,
+				0DFBF3F927A6910A006F635B /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D9A7EC527A8B10C00AD6D3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D9A7EFB27A8B25C00AD6D3F /* UIKit.framework */,
+				0D9A7EF927A8B25600AD6D3F /* SystemConfiguration.framework */,
+				0D9A7EF727A8B24800AD6D3F /* QuartzCore.framework */,
+				0D9A7EF527A8B24200AD6D3F /* OpenGLES.framework */,
+				0D9A7EF327A8B23C00AD6D3F /* Metal.framework */,
+				0D9A7EF127A8B23600AD6D3F /* libz.tbd */,
+				0D9A7EEF27A8B22E00AD6D3F /* libc++.tbd */,
+				0D9A7EED27A8B22700AD6D3F /* ImageIO.framework */,
+				0D9A7EEB27A8B22000AD6D3F /* GLKit.framework */,
+				0D9A7EE927A8B21B00AD6D3F /* CoreText.framework */,
+				0D9A7EE727A8B21500AD6D3F /* CoreTelephony.framework */,
+				0D9A7EE527A8B21000AD6D3F /* CoreLocation.framework */,
+				0D9A7EE327A8B20A00AD6D3F /* CoreImage.framework */,
+				0D9A7EE127A8B20400AD6D3F /* CoreGraphics.framework */,
+				0D9A7EDF27A8B1FD00AD6D3F /* CoreData.framework */,
+				0D9A7EDD27A8B1F600AD6D3F /* Accelerate.framework */,
+				0D9A7ED027A8B11400AD6D3F /* GoogleMapsM4B.framework */,
+				0D9A7ECD27A8B11200AD6D3F /* GoogleMapsCore.framework */,
+				0D9A7ECA27A8B11000AD6D3F /* GoogleMapsBase.framework */,
+				0D9A7EC627A8B10D00AD6D3F /* GoogleMaps.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0DFBF3DA27A68A63006F635B = {
 			isa = PBXGroup;
 			children = (
 				0DFBF3E527A68A63006F635B /* iosApp */,
 				0DFBF3E427A68A63006F635B /* Products */,
+				0D9A7EC527A8B10C00AD6D3F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,11 +111,14 @@
 		0DFBF3E527A68A63006F635B /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				0DFBF3FC27A6B235006F635B /* LoginView.swift */,
+				0DFBF3FE27A6CDE5006F635B /* RegisterScreen.swift */,
 				0DFBF3F527A68FD7006F635B /* GoogleService-Info.plist */,
 				0DFBF3E627A68A63006F635B /* iosAppApp.swift */,
 				0DFBF3E827A68A63006F635B /* ContentView.swift */,
 				0DFBF3EA27A68A64006F635B /* Assets.xcassets */,
 				0DFBF3EC27A68A64006F635B /* Preview Content */,
+				0D9A7EC327A89BCC00AD6D3F /* DetailScreen.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -87,6 +148,10 @@
 			dependencies = (
 			);
 			name = iosApp;
+			packageProductDependencies = (
+				0DFBF3F827A6910A006F635B /* FirebaseAuth */,
+				0DFBF3FA27A6910A006F635B /* FirebaseDatabase */,
+			);
 			productName = iosApp;
 			productReference = 0DFBF3E327A68A63006F635B /* iosApp.app */;
 			productType = "com.apple.product-type.application";
@@ -115,6 +180,9 @@
 				Base,
 			);
 			mainGroup = 0DFBF3DA27A68A63006F635B;
+			packageReferences = (
+				0DFBF3F727A6910A006F635B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 0DFBF3E427A68A63006F635B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -162,6 +230,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D9A7EC427A89BCC00AD6D3F /* DetailScreen.swift in Sources */,
+				0DFBF3FF27A6CDE5006F635B /* RegisterScreen.swift in Sources */,
+				0DFBF3FD27A6B235006F635B /* LoginView.swift in Sources */,
 				0DFBF3E927A68A63006F635B /* ContentView.swift in Sources */,
 				0DFBF3E727A68A63006F635B /* iosAppApp.swift in Sources */,
 			);
@@ -296,7 +367,11 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
 				DEVELOPMENT_TEAM = SJ22AA4TZ6;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
+				EXCLUDED_ARCHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -312,6 +387,7 @@
 					"$(inherited)",
 					"-framework",
 					shared,
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jrodriguezva.mimorutas.iosApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -331,7 +407,11 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
 				DEVELOPMENT_TEAM = SJ22AA4TZ6;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
+				EXCLUDED_ARCHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -347,6 +427,7 @@
 					"$(inherited)",
 					"-framework",
 					shared,
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jrodriguezva.mimorutas.iosApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -378,6 +459,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0DFBF3F727A6910A006F635B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0DFBF3F827A6910A006F635B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DFBF3F727A6910A006F635B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		0DFBF3FA27A6910A006F635B /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DFBF3F727A6910A006F635B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0DFBF3DB27A68A63006F635B /* Project object */;
 }

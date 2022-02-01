@@ -7,14 +7,16 @@
 
 import SwiftUI
 import shared
+import MapKit
+
 
 struct ContentView: View {
     var body: some View {
-        RedView()
+        MainView()
     }
 }
 
-struct RedView: View {
+struct MainView: View {
     var body: some View {
         let list = RouteService().getAllSpaces()
         NavigationView {
@@ -22,7 +24,7 @@ struct RedView: View {
                 ForEach(list, id: \.self) { route in
                     HStack {
                         Text(route.name)
-                        NavigationLink(destination: RutesDetail()) {
+                        NavigationLink(destination: RutesDetail(route: route)) {
                             EmptyView()
                         }
                         .buttonStyle(PlainButtonStyle())
@@ -37,6 +39,7 @@ struct RedView: View {
 
 
 struct RutesDetail: View {
+    let route: Space
     var body: some View {
         TabView {
             Text("Friends Screen")
@@ -44,7 +47,7 @@ struct RutesDetail: View {
                     Image(systemName: "heart.fill")
                     Text("Favourites")
                 }
-            DView()
+            DetailScreen(route:route)
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Friends")
@@ -54,23 +57,6 @@ struct RutesDetail: View {
                     Image(systemName: "mappin.circle.fill")
                     Text("Nearby")
                 }
-        }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        DView()
-    }
-}
-
-
-struct DView: View {
-    @State private var score = 0
-
-    var body: some View {
-        NavigationView {
-            
         }
     }
 }

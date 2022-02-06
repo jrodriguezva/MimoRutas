@@ -22,6 +22,9 @@ kotlin {
     }
 
     sourceSets {
+        all {
+            languageSettings.optIn("org.mylibrary.OptInAnnotation")
+        }
         val commonMain by getting {
             dependencies {
                 //Network
@@ -90,3 +93,7 @@ tasks.withType<KotlinCompile> {
         jvmTarget = "1.8"
     }
 }
+tasks.withType<KotlinCompile>()
+    .configureEach {
+        kotlinOptions.freeCompilerArgs += "-opt-in=org.mylibrary.OptInAnnotation"
+    }

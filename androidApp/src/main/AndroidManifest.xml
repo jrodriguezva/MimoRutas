@@ -5,6 +5,8 @@
     <application
         android:allowBackup="false"
         android:supportsRtl="true"
+        android:label="Mimo Rutas"
+        android:icon="@mipmap/ic_launcher"
         android:theme="@style/Theme.MimoRutas.NoActionBar">
         <activity
             android:name=".MainActivity"

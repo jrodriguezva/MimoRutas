@@ -60,6 +60,16 @@ data class GeoJsonServerResult(
             return super.equals(other)
         }
 
+        override fun hashCode(): Int {
+            var result = bbox?.hashCode() ?: 0
+            result = 31 * result + (geometry?.hashCode() ?: 0)
+            result = 31 * result + (geometryName?.hashCode() ?: 0)
+            result = 31 * result + (id?.hashCode() ?: 0)
+            result = 31 * result + (properties?.hashCode() ?: 0)
+            result = 31 * result + (type?.hashCode() ?: 0)
+            return result
+        }
+
         @Serializable(with = GeometrySerializer::class)
         data class Geometry(
             @SerialName("type")

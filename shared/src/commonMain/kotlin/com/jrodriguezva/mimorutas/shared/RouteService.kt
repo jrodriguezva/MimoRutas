@@ -6,6 +6,7 @@ import com.jrodriguezva.mimorutas.shared.ktor.response.GeoJsonServerResult
 import com.jrodriguezva.mimorutas.shared.models.DataState
 import com.jrodriguezva.mimorutas.shared.models.Space
 import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.encodeToString
 
 
 @OptIn(ExperimentalSerializationApi::class)
@@ -26,10 +27,11 @@ object RouteService {
         val breedResult = ktorApi.getGeoJson(sigren)
 
         val feature = breedResult.features
+        val full = breedResult.copy(features = breedResult.features?.filter { it.geometry != null })
         return if (feature?.isEmpty() == true) {
             DataState(empty = true, loading = false)
         } else {
-            DataState(breedResult, loading = false)
+            DataState(full, loading = false)
         }
 
     }

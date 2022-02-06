@@ -8,31 +8,43 @@
 import SwiftUI
 import shared
 import MapKit
+import FirebaseAuth
 
 
-struct ContentView: View {
-    var body: some View {
-        MainView()
-    }
-}
 
 struct MainView: View {
+    @State var isLogged: Bool = true
+    
     var body: some View {
-        let list = RouteService().getAllSpaces()
-        NavigationView {
-            List {
-                ForEach(list, id: \.self) { route in
-                    HStack {
-                        Text(route.name)
-                        NavigationLink(destination: RutesDetail(route: route)) {
-                            EmptyView()
+        if isLogged {
+            let list = RouteService().getAllSpaces()
+            NavigationView {
+                List {
+                    ForEach(list, id: \.self) { route in
+                        HStack {
+                            Text(route.name)
+                            NavigationLink(destination: RutesDetail(route: route)) {
+                                EmptyView()
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
-                        .buttonStyle(PlainButtonStyle())
+                    }
+                }
+                .navigationTitle("Todos los espacios")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    Button("Cerrar sesión") {
+                        do {
+                            try Auth.auth().signOut()
+                            isLogged = false
+                        }catch {
+                            
+                        }
                     }
                 }
             }
-            .navigationTitle("Todos los espacios")
-            .navigationBarTitleDisplayMode(.inline)
+        }else {
+            InitScreen()
         }
     }
 }
@@ -40,23 +52,20 @@ struct MainView: View {
 
 struct RutesDetail: View {
     let route: Space
+    init(route: Space) {
+        self.route = route
+        UITabBar.appearance().backgroundColor = .systemBackground
+    }
+    
     var body: some View {
-        TabView {
-            Text("Friends Screen")
-                .tabItem {
-                    Image(systemName: "heart.fill")
-                    Text("Favourites")
-                }
-            DetailScreen(route:route)
-                .tabItem {
-                    Image(systemName: "person.fill")
-                    Text("Friends")
-                }
-            Text("Nearby Screen")
-                .tabItem {
-                    Image(systemName: "mappin.circle.fill")
-                    Text("Nearby")
-                }
+        VStack{
+            TabView {
+                DetailScreen(route:route)
+                    .tabItem {
+                        Image(systemName: "location.fill")
+                        Text("Espacios")
+                    }
+            }
         }
     }
 }

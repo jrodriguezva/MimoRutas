@@ -1,5 +1,6 @@
 import SwiftUI
 import shared
+import FirebaseAuth
 
 let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0)
 
@@ -14,19 +15,15 @@ class ObservableAuthModel: ObservableObject {
     var loggedIn: Bool = false
     
     @Published
-    var error: String?
+    var error: Bool = false
     
     func activate() {
         viewModel = AuthViewModel { [weak self] dataState in
             self?.loading = dataState.loading
             self?.loggedIn = dataState.data as? Bool ?? false
-            self?.error = dataState.exception
             
-            
-            if let errorMessage = dataState.exception {
-                
-            }
         }
+        loggedIn = Auth.auth().currentUser != nil
     }
     
     func deactivate() {
@@ -35,7 +32,16 @@ class ObservableAuthModel: ObservableObject {
     }
     
     func onLogin(_ email: String,_ pass: String) {
-        viewModel?.login(user: email,pass:pass)
+        //viewModel?.login(user: email,pass:pass)
+        Auth.auth().signIn(withEmail: email, password: pass) { [weak self] authResult, error in
+          guard let strongSelf = self else { return }
+            if authResult?.user != nil {
+                strongSelf.loggedIn = true
+            } else {
+                strongSelf.error = true
+            }
+
+        }
     }
     
 }
@@ -51,10 +57,11 @@ struct InitScreen : View {
                 observableModel:  observableModel
             ).onAppear(perform: {
                 observableModel.activate()
-            })
-                .onDisappear(perform: {
+            }).onDisappear(perform: {
                     observableModel.deactivate()
-                })
+                }).alert(isPresented: $observableModel.error) {
+                    Alert(title: Text("Error"), message: Text("Usuario o contraseña incorrectos"), dismissButton: .default(Text("OK")))
+                }
         }
     }
 }
@@ -106,16 +113,6 @@ struct LoginView: View {
         
     }
 }
-
-#if DEBUG
-struct LoginView_Previews : PreviewProvider {
-    static var previews: some View {
-        LoginView(
-            onLoginClick: {_,_ in }
-        )
-    }
-}
-#endif
 
 struct WelcomeText : View {
     var body: some View {

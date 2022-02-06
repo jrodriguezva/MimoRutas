@@ -47,3 +47,7 @@ android {
         kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
 }
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions.freeCompilerArgs += "-opt-in=org.mylibrary.OptInAnnotation"
+}
